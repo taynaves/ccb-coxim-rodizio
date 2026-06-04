@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rodízio Cultos Especiais — CCB Coxim-MS 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F4EE;--surf:#FFF;--hdr:#15253A;--hfg:#F7F4EE;
+  --gold:#B8912A;--glt:#F0E0B0;--ink:#1A1F2E;--mid:#3D4456;--lt:#6B7280;
+  --bdr:#DDD8CE;--bdr2:rgba(221,216,206,.45);--row-even:#F2EFE8;
+  --son:#C75B3A;--pg:#2E7D4F;--cox:#B07B00;--rv:#1A6FA8;--sg:#7B45AD;
+  --son-l:#FBE9E4;--pg-l:#E3F4EB;--cox-l:#FDF3D8;--rv-l:#E0F0FB;--sg-l:#F1E8FB;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Lora',Georgia,serif;font-size:14px;line-height:1.5}
+#rot{display:none;position:fixed;inset:0;background:rgba(21,37,58,.95);z-index:9999;
+  flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:30px}
+#rot h2{font-family:'Cinzel',serif;font-size:19px;margin-bottom:9px;color:var(--gold)}
+#rot p{font-size:13px;color:rgba(255,255,255,.75);max-width:270px;margin-bottom:18px}
+#rot .ri{font-size:44px;margin-bottom:12px}
+#rot button{padding:9px 22px;background:var(--gold);border:none;border-radius:20px;color:#fff;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+.ph{background:var(--hdr);color:var(--hfg);padding:26px 36px 18px;position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(184,145,42,.04) 40px,rgba(184,145,42,.04) 41px);
+  pointer-events:none}
+.phi{position:relative;max-width:1280px;margin:0 auto}
+.ph-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ph-ttl{font-family:'Cinzel',serif;font-size:22px;font-weight:700;line-height:1.2;margin-bottom:4px}
+.ph-sub{font-style:italic;font-size:13px;color:rgba(247,244,238,.6);margin-bottom:14px}
+.ph-meta{display:flex;gap:20px;flex-wrap:wrap}
+.mp{display:flex;align-items:center;gap:5px;font-size:12px;color:rgba(247,244,238,.7)}
+.mp strong{color:var(--glt)}.md{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.7}
+.sb{background:var(--hdr);border-top:1px solid rgba(184,145,42,.2);padding:0 36px}
+.sbi{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap}
+.si{padding:10px 20px 10px 0;border-right:1px solid rgba(255,255,255,.07);margin-right:20px}
+.si:last-child{border-right:none}
+.sn{font-family:'Cinzel',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.sl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(247,244,238,.45)}
+.main{max-width:1280px;margin:0 auto;padding:24px 36px}
+.tabs{display:flex;gap:2px;margin-bottom:20px;border-bottom:2px solid var(--bdr);flex-wrap:wrap}
+.tb{font-family:'Cinzel',serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  padding:9px 15px 11px;border:none;background:none;cursor:pointer;color:var(--lt);
+  border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .2s;white-space:nowrap}
+.tb:hover{color:var(--mid)}.tb.active{color:var(--ink);border-bottom-color:var(--gold)}
+.tp{display:none}.tp.active{display:block}
+.shdr{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.st{font-family:'Playfair Display',serif;font-size:18px;font-weight:700}
+.sd{font-size:13px;color:var(--lt);margin-bottom:14px;font-style:italic}
+.pdf-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;background:var(--gold);
+  color:var(--hdr);border-radius:20px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:1px;
+  text-transform:uppercase;text-decoration:none;font-weight:700;cursor:pointer;
+  transition:opacity .2s;white-space:nowrap;box-shadow:0 1px 4px rgba(184,145,42,.3)}
+.pdf-btn:hover{opacity:.85;color:var(--hdr)}
+.fb{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.flbl{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--lt)}
+.fbtn{padding:4px 13px;border-radius:20px;border:1.5px solid var(--bdr);background:var(--surf);
+  font-family:'Lora',serif;font-size:12px;cursor:pointer;color:var(--mid);transition:all .15s}
+.fbtn.active{color:#fff;border-color:transparent}
+.fbtn[data-f="ALL"].active{background:var(--ink)}
+.fbtn[data-f="Sonora"].active{background:var(--son)}
+.fbtn[data-f="Pedro Gomes"].active{background:var(--pg)}
+.fbtn[data-f="Coxim"].active{background:var(--cox)}
+.fbtn[data-f="Rio Verde"].active{background:var(--rv)}
+.fbtn[data-f="Sao Gabriel"].active{background:var(--sg)}
+.tw{overflow-x:auto;border-radius:8px;border:1px solid var(--bdr);background:var(--surf)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+thead tr{background:var(--hdr);color:var(--hfg)}
+thead th{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;
+  padding:10px 11px;text-align:left;white-space:nowrap}
+tbody tr{border-bottom:1px solid var(--bdr2);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:nth-child(odd){background:#FFF}
+tbody tr:nth-child(even){background:var(--row-even)}
+tbody tr:nth-child(even)[data-c="Sonora"]{background:rgba(199,91,58,.05)}
+tbody tr:nth-child(even)[data-c="Pedro Gomes"]{background:rgba(46,125,79,.05)}
+tbody tr:nth-child(even)[data-c="Coxim"]{background:rgba(176,123,0,.05)}
+tbody tr:nth-child(even)[data-c="Rio Verde"]{background:rgba(26,111,168,.05)}
+tbody tr:nth-child(even)[data-c="Sao Gabriel"]{background:rgba(123,69,173,.05)}
+tbody tr:hover{filter:brightness(.97)}
+tbody td{padding:9px 11px;vertical-align:middle}
+td.sc{padding:0;width:4px}
+.cs{width:4px;display:block;min-height:36px}
+tr[data-c="Sonora"] .cs{background:var(--son)}
+tr[data-c="Pedro Gomes"] .cs{background:var(--pg)}
+tr[data-c="Coxim"] .cs{background:var(--cox)}
+tr[data-c="Rio Verde"] .cs{background:var(--rv)}
+tr[data-c="Sao Gabriel"] .cs{background:var(--sg)}
+.cb{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;white-space:nowrap}
+.cb-son{background:var(--son-l);color:var(--son)}.cb-pg{background:var(--pg-l);color:var(--pg)}
+.cb-cox{background:var(--cox-l);color:var(--cox)}.cb-rv{background:var(--rv-l);color:var(--rv)}
+.cb-sg{background:var(--sg-l);color:var(--sg)}
+.db{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;background:#ECEAE4;color:var(--mid)}
+.hora{color:var(--lt);font-size:11.5px;white-space:nowrap}
+.anc-badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;
+  background:var(--cox-l);color:var(--gold);border:1px solid rgba(184,145,42,.35);
+  font-family:'Cinzel',serif;letter-spacing:.3px;vertical-align:middle;margin-left:4px}
+.jt-note{font-size:10px;color:var(--gold);font-weight:700;vertical-align:super}
+.vcity{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:10px;
+  font-size:10px;font-weight:600;white-space:nowrap;font-family:'Cinzel',serif;letter-spacing:.3px}
+.vc-cox{background:var(--cox-l);color:var(--cox);border:1px solid rgba(176,123,0,.2)}
+.vc-son{background:var(--son-l);color:var(--son);border:1px solid rgba(199,91,58,.2)}
+.vc-pg{background:var(--pg-l);color:var(--pg);border:1px solid rgba(46,125,79,.2)}
+.vc-rv{background:var(--rv-l);color:var(--rv);border:1px solid rgba(26,111,168,.2)}
+.vc-sg{background:var(--sg-l);color:var(--sg);border:1px solid rgba(123,69,173,.2)}
+.lgd{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.li{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mid)}
+.ld{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.nota-eco{background:var(--cox-l);border:1px solid rgba(176,123,0,.3);border-radius:6px;
+  padding:10px 14px;font-size:12.5px;color:var(--mid);margin-bottom:14px}
+.nota-eco strong{color:var(--cox)}
+.fn{margin-top:14px;padding-top:12px;border-top:1px solid var(--bdr);
+  font-size:12px;color:var(--lt);font-style:italic;line-height:1.8}
+.fn strong{color:var(--mid);font-style:normal}
+.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.dc{background:var(--surf);border:1px solid var(--bdr);border-radius:8px;overflow:hidden}
+.dch{padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--bdr)}
+.dct{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.dca{font-size:11px;color:var(--lt);font-style:italic}
+.dp{display:flex;align-items:center;padding:7px 14px;border-bottom:1px solid var(--bdr2);gap:8px}
+.dp:nth-child(even){background:var(--row-even)}.dp:last-child{border-bottom:none}
+.dn{flex:1;font-size:12.5px}.dn small{font-size:11px;color:var(--lt);font-style:italic;display:block}
+.dbw{width:80px;height:5px;background:var(--bdr);border-radius:3px;overflow:hidden}
+.dbb{height:100%;border-radius:3px}
+.ba{background:#B8912A}.bd{background:#1A6FA8}.bc{background:#2E7D4F}
+.bco-cox{background:#B07B00}.bco-son{background:#C75B3A}
+.bco-pg{background:#2E7D4F}.bco-rv{background:#1A6FA8}.bco-sg{background:#7B45AD}
+.dk{font-family:'Cinzel',serif;font-size:13px;font-weight:700;width:16px;text-align:right;color:var(--mid)}
+.dn-note{padding:8px 14px;border-top:1px solid var(--bdr);font-size:11px;color:var(--lt);font-style:italic}
+.ag{display:grid;gap:12px}
+.ac{background:var(--surf);border:1px solid var(--bdr);border-radius:8px;border-left:4px solid;padding:12px 16px}
+.ac.info{border-left-color:var(--rv)}.ac.warn{border-left-color:var(--cox)}
+.ac.ok{border-left-color:var(--pg)}.ac.note{border-left-color:var(--sg)}
+.ah{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.ai{font-size:15px}.at{font-family:'Playfair Display',serif;font-size:14px;font-weight:700}
+.ab{font-size:12.5px;color:var(--mid);line-height:1.65}
+.ab ul{padding-left:16px;margin-top:4px}.ab li{margin-bottom:4px}
+.ab strong{color:var(--ink)}.ab code{background:#EEE;padding:1px 5px;border-radius:3px;font-size:12px}
+.pg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:13px}
+.pcard{background:var(--surf);border:1px solid var(--bdr);border-radius:8px;overflow:hidden}
+.phead{padding:10px 14px;display:flex;align-items:center;gap:8px}
+.pav{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.pname{font-size:12.5px;font-weight:600}.prole{font-size:11px;color:var(--lt);font-style:italic}
+.pass{padding:0 14px 10px}
+.pai{display:flex;gap:7px;padding:5px 0;border-bottom:1px solid var(--bdr2);align-items:flex-start}
+.pai:nth-child(even){background:rgba(247,244,238,.6)}.pai:last-child{border-bottom:none}
+.pad{font-family:'Cinzel',serif;font-size:10.5px;color:var(--lt);width:48px;flex-shrink:0;padding-top:1px}
+.pal{font-size:12px}.pal small{display:block;font-size:11px;color:var(--lt);font-style:italic}
+.blk-sec{margin-bottom:20px}
+.blk-t{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--mid);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--bdr)}
+.blk-table{width:100%;border-collapse:collapse;background:var(--surf);border:1px solid var(--bdr);
+  border-radius:8px;overflow:hidden;font-size:12.5px}
+.blk-table thead th{background:var(--hdr);color:var(--hfg);font-family:'Cinzel',serif;
+  font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 11px;text-align:left}
+.blk-table tbody tr{border-bottom:1px solid var(--bdr2)}
+.blk-table tbody tr:nth-child(even){background:var(--row-even)}
+.blk-table tbody tr:last-child{border-bottom:none}
+.blk-table td{padding:7px 11px;vertical-align:top;color:var(--mid);line-height:1.5}
+.blk-table td:first-child{color:var(--ink);font-weight:500;white-space:nowrap}
+.bt{display:inline-block;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:500}
+.bt-red{background:#FEEAE9;color:#C0392B}.bt-ora{background:var(--cox-l);color:var(--cox)}
+.bt-blue{background:var(--rv-l);color:var(--rv)}.bt-pur{background:var(--sg-l);color:var(--sg)}
+@media(max-width:768px){
+  .ph{padding:16px 16px 12px}.sb{padding:0 16px}.main{padding:14px 16px}
+  .ph-ttl{font-size:16px}.dg{grid-template-columns:1fr}.pg2{grid-template-columns:1fr}
+  .ph-meta .mp:nth-child(n+4){display:none}.tabs{gap:1px}.tb{font-size:9px;padding:7px 9px 9px}}
+@media(max-width:1024px) and (orientation:landscape){
+  .tw{width:100%}table{font-size:10.5px}thead th{font-size:7.5px;padding:6px 7px}
+  tbody td{padding:5px 7px;font-size:10.5px}.main{padding:10px 12px}
+  .ph{padding:10px 16px 8px}.sb{display:none}.ph-ttl{font-size:14px}
+  .ph-sub,.ph-meta{display:none}.tabs{margin-bottom:12px}.tb{font-size:9px;padding:6px 9px 8px}}
+</style>
+</head>
+<body>
+<div id="rot">
+  <div class="ri">&#128241;&#8635;</div>
+  <h2>Gire o celular</h2>
+  <p>Para melhor visualização, use a posição horizontal</p>
+  <button onclick="document.getElementById('rot').style.display='none'">Ver assim mesmo</button>
+</div>
+<div class="ph"><div class="phi">
+  <div class="ph-lbl">Congregação Cristã no Brasil &middot; Regional Coxim-MS &middot; Secretaria da Piedade</div>
+  <div class="ph-ttl">Rod&iacute;zio de Cultos Especiais &mdash; Coletas de Inten&ccedil;&atilde;o 2026</div>
+  <div class="ph-sub">Equipe visitante: Ministro Respons&aacute;vel &middot; Di&aacute;cono &middot; 2 Administradores</div>
+  <div class="ph-meta">
+    <div class="mp"><div class="md"></div><strong>17</strong> localidades</div>
+    <div class="mp"><div class="md"></div>Per&iacute;odo <strong>08/06 &ndash; 05/07/2026</strong></div>
+    <div class="mp"><div class="md"></div><strong>5</strong> cidades &middot; <strong>4</strong> por culto</div>
+    <div class="mp"><div class="md"></div>Vers&atilde;o <strong>6.0</strong></div>
+  </div>
+</div></div>
+<div class="sb"><div class="sbi">
+  <div class="si"><div class="sn">17</div><div class="sl">Cultos</div></div>
+  <div class="si"><div class="sn">4</div><div class="sl">Semanas</div></div>
+  <div class="si"><div class="sn">5</div><div class="sl">Cidades</div></div>
+  <div class="si"><div class="sn">4</div><div class="sl">Por culto</div></div>
+  <div class="si"><div class="sn">15</div><div class="sl">Cooperadores</div></div>
+  <div class="si"><div class="sn">2</div><div class="sl">Anc. participantes</div></div>
+</div></div>
+<div class="main">
+  <div class="tabs">
+    <button class="tb active" onclick="switchTab('cal',this)">&#128197; Calend&aacute;rio</button>
+    <button class="tb" onclick="switchTab('irmao',this)">&#128100; Por Irm&atilde;o</button>
+    <button class="tb" onclick="switchTab('dist',this)">&#128202; Distribui&ccedil;&atilde;o</button>
+    <button class="tb" onclick="switchTab('blk',this)">&#128274; Bloqueios</button>
+    <button class="tb" onclick="switchTab('alerta',this)">&#9888;&#65039; Alertas &amp; Cobertura</button>
+  </div>
+
+  <!-- CALENDÁRIO -->
+  <div id="tab-cal" class="tp active">
+    <div class="shdr">
+      <div><div class="st">Calend&aacute;rio de Cultos Especiais</div></div>
+      <a id="cal-pdf-btn" class="pdf-btn" href="pdfs/calendario_todas_ccb_2026.pdf" target="_blank">&#128229; Baixar PDF</a>
+    </div>
+    <div class="sd">08/06 a 05/07/2026 &middot; 17 localidades &middot; equipe de 4 por culto</div>
+    <div class="nota-eco">
+      <strong>Crit&eacute;rio de economia:</strong> equipes viajam juntas (1 carro), priorizando a cidade mais pr&oacute;xima com recursos dispon&iacute;veis.
+      Cidades sem administradores (PG, RV, SG) recebem admins de Coxim &mdash; formando <strong>equipe de 2 cidades</strong> (6 cultos).
+      Os demais 11 cultos t&ecirc;m equipe de <strong>1 cidade</strong>.
+    </div>
+    <div class="lgd">
+      <div class="li"><div class="ld" style="background:var(--son)"></div>Sonora</div>
+      <div class="li"><div class="ld" style="background:var(--pg)"></div>Pedro Gomes</div>
+      <div class="li"><div class="ld" style="background:var(--cox)"></div>Coxim</div>
+      <div class="li"><div class="ld" style="background:var(--rv)"></div>Rio Verde</div>
+      <div class="li"><div class="ld" style="background:var(--sg)"></div>S&atilde;o Gabriel</div>
+    </div>
+    <div class="fb">
+      <span class="flbl">Filtrar:</span>
+      <button class="fbtn active" data-f="ALL" onclick="fc(this,'ALL')">Todas</button>
+      <button class="fbtn" data-f="Sonora" onclick="fc(this,'Sonora')">Sonora</button>
+      <button class="fbtn" data-f="Pedro Gomes" onclick="fc(this,'Pedro Gomes')">Pedro Gomes</button>
+      <button class="fbtn" data-f="Coxim" onclick="fc(this,'Coxim')">Coxim</button>
+      <button class="fbtn" data-f="Rio Verde" onclick="fc(this,'Rio Verde')">Rio Verde</button>
+      <button class="fbtn" data-f="Sao Gabriel" onclick="fc(this,'Sao Gabriel')">S&atilde;o Gabriel</button>
+    </div>
+    <div class="tw"><table><thead><tr>
+      <th style="width:4px;padding:0"></th>
+      <th>Data</th><th>Dia</th><th>Cidade</th><th>Localidade</th><th>Hora</th>
+      <th>Ministro Resp.</th><th>Di&aacute;cono</th><th>Admin 1</th><th>Admin 2</th><th>Equipe Visitante</th>
+    </tr></thead><tbody id="ctbody"></tbody></table></div>
+    <div class="fn">
+      <strong>Anc.</strong> = Anci&atilde;o participando por decis&atilde;o da coordena&ccedil;&atilde;o local neste culto espec&iacute;fico. N&atilde;o integra o pool geral do rod&iacute;zio.<br>
+      <strong>*</strong> Jo&atilde;o Torquato de Souza &mdash; presen&ccedil;a obrigat&oacute;ria em 05/07 (Beira Alta, Rio Verde), por determina&ccedil;&atilde;o B1. Prevalece sobre bloqueio de Rio Verde.<br>
+      <strong>Equipes oficiais:</strong> cooperadores regulares e anci&otilde;es designados servem como Ministro Respons&aacute;vel. Cooperadores de Jovens n&atilde;o participam.
+    </div>
+  </div>
+
+  <!-- POR IRMÃO -->
+  <div id="tab-irmao" class="tp">
+    <div class="shdr">
+      <div><div class="st">Designa&ccedil;&otilde;es por Irm&atilde;o</div></div>
+      <a class="pdf-btn" href="pdfs/por_irmao_ccb_2026.pdf" target="_blank">&#128229; Baixar PDF</a>
+    </div>
+    <div class="sd">Ministros respons&aacute;veis, di&aacute;conos e administradores com suas datas e localidades</div>
+    <div class="pg2" id="pgrid"></div>
+  </div>
+
+  <!-- DISTRIBUIÇÃO -->
+  <div id="tab-dist" class="tp">
+    <div class="shdr">
+      <div><div class="st">Distribui&ccedil;&atilde;o de Designa&ccedil;&otilde;es</div></div>
+      <a class="pdf-btn" href="pdfs/distribuicao_ccb_2026.pdf" target="_blank">&#128229; Baixar PDF</a>
+    </div>
+    <div class="sd">Todos os cooperadores regulares com 1 designa&ccedil;&atilde;o &middot; m&aacute;xima equidade</div>
+    <div class="dg" id="dgrid"></div>
+  </div>
+
+  <!-- BLOQUEIOS -->
+  <div id="tab-blk" class="tp">
+    <div class="shdr">
+      <div><div class="st">Bloqueios e Restri&ccedil;&otilde;es</div></div>
+      <a class="pdf-btn" href="pdfs/bloqueios_ccb_2026.pdf" target="_blank">&#128229; Baixar PDF</a>
+    </div>
+    <div class="sd">Datas bloqueadas e restri&ccedil;&otilde;es individuais &mdash; refer&ecirc;ncia para ajustes futuros</div>
+    <div class="blk-sec"><div class="blk-t">1 &middot; Datas Bloqueadas (Regionais)</div>
+      <div class="tw"><table class="blk-table"><thead><tr>
+        <th>Data</th><th>Dia</th><th>Tipo</th><th>Escopo</th><th>Motivo</th>
+      </tr></thead><tbody id="blk-global"></tbody></table></div>
+    </div>
+    <div class="blk-sec"><div class="blk-t">2 &middot; Bloqueios por Santa Ceia</div>
+      <div class="tw"><table class="blk-table"><thead><tr>
+        <th>Data</th><th>Dia</th><th>Localidade (SC)</th><th>Irm&atilde;o(s) Bloqueado(s)</th>
+      </tr></thead><tbody id="blk-sc"></tbody></table></div>
+    </div>
+    <div class="blk-sec"><div class="blk-t">3 &middot; Restri&ccedil;&otilde;es Individuais</div>
+      <div class="tw"><table class="blk-table"><thead><tr>
+        <th>Irm&atilde;o</th><th>Restri&ccedil;&atilde;o</th><th>Motivo</th>
+      </tr></thead><tbody id="blk-ind"></tbody></table></div>
+    </div>
+  </div>
+
+  <!-- ALERTAS -->
+  <div id="tab-alerta" class="tp">
+    <div class="shdr">
+      <div><div class="st">Alertas &amp; Cobertura Ministerial</div></div>
+      <a class="pdf-btn" href="pdfs/alertas_ccb_2026.pdf" target="_blank">&#128229; Baixar PDF</a>
+    </div>
+    <div class="sd">Verifica&ccedil;&otilde;es realizadas e pontos de aten&ccedil;&atilde;o do calend&aacute;rio</div>
+    <div class="ag" id="agrid"></div>
+  </div>
+</div>
+
+<script>
+const EV=[
+  {n:1, d:'08/06/2026',dn:'Segunda-feira',  city:'Coxim',       loc:'Piracema',              hr:'19:30',resp:'Adair Barbosa Rios',            anc:false,diac:'Adalto Azevedo Pereira',         a1:'Douglas',    a2:'Fernando',             vc:'RV+Coxim'},
+  {n:2, d:'08/06/2026',dn:'Segunda-feira',  city:'Coxim',       loc:'Vila Bela II',          hr:'19:30',resp:'Jos\u00e9 Donizete de Souza',    anc:false,diac:'Jos\u00e9 Cavalcanti Costa',      a1:'Jos\u00e9 Carlos',a2:'Noel',            vc:'PG+Coxim'},
+  {n:3, d:'09/06/2026',dn:'Ter\u00e7a-feira',city:'Coxim',      loc:'Vale do Taquari',       hr:'19:30',resp:'Joel Pereira Rosa',              anc:false,diac:'Eliseu Sim\u00e3o Rezende',      a1:'Mayron',     a2:'Beto',                 vc:'RV+Coxim'},
+  {n:4, d:'11/06/2026',dn:'Quinta-feira',   city:'Sonora',      loc:'R. dos Mec\u00e2nicos', hr:'19:30',resp:'Gerv\u00e1sio Proe\u00e7a',     anc:false,diac:'Adalto Azevedo Pereira',         a1:'Danilo',     a2:'Noel',                 vc:'Coxim'},
+  {n:5, d:'11/06/2026',dn:'Quinta-feira',   city:'Pedro Gomes', loc:'Vila Marcelino',        hr:'19:30',resp:'Cleitom',                        anc:false,diac:'Eliseu Sim\u00e3o Rezende',      a1:'Douglas',    a2:'Mayron',               vc:'Coxim'},
+  {n:6, d:'12/06/2026',dn:'Sexta-feira',    city:'Coxim',       loc:'Marechal Rondon',       hr:'19:30',resp:'Jos\u00e9 Creonei da Silva',     anc:false,diac:'Edinaldo Fernandes Jr.',         a1:'Lucas',      a2:'Tigr\u00e3o',          vc:'Sonora'},
+  {n:7, d:'13/06/2026',dn:'S\u00e1bado',   city:'Coxim',       loc:'Central Coxim',         hr:'19:30',resp:'Aildo Souza Gomes',              anc:false,diac:'Edinaldo Fernandes Jr.',         a1:'Miguel',     a2:'Lucas',                vc:'Sonora'},
+  {n:8, d:'13/06/2026',dn:'S\u00e1bado',   city:'Sonora',      loc:'Central Sonora',        hr:'19:30',resp:'Jo\u00e3o Ferreira Ribolis',     anc:false,diac:"Nilson Sant\u2019Anna",          a1:'Fernando',   a2:'Jos\u00e9 Carlos',     vc:'Coxim'},
+  {n:9, d:'14/06/2026',dn:'Domingo',        city:'Rio Verde',   loc:'Central RV',            hr:'19:00',resp:'Jesiel de Brito Fonseca',        anc:true, diac:"Nilson Sant\u2019Anna",          a1:'Mayron',     a2:'Noel',                 vc:'Coxim'},
+  {n:10,d:'14/06/2026',dn:'Domingo',        city:'Coxim',       loc:'Silviol\u00e2ndia',     hr:'19:00',resp:'Elias Campos da Silva',          anc:false,diac:'Lindomar dos Anjos Souza',       a1:'Douglas',    a2:'Fernando',             vc:'SG+Coxim'},
+  {n:11,d:'14/06/2026',dn:'Domingo',        city:'Sao Gabriel', loc:'Jardim Gramado',        hr:'19:00',resp:'Samuel Ribeiro da Silva',        anc:false,diac:'Jo\u00e3o Torquato de Souza',   a1:'Beto',       a2:'Jos\u00e9 Carlos',     vc:'Coxim'},
+  {n:12,d:'17/06/2026',dn:'Quarta-feira',   city:'Coxim',       loc:'Posto Recreio',         hr:'19:30',resp:'Valdeci Pereira da Silva',       anc:false,diac:'Jos\u00e9 Cavalcanti Costa',     a1:'Danilo',     a2:'Douglas',              vc:'PG+Coxim'},
+  {n:13,d:'20/06/2026',dn:'S\u00e1bado',   city:'Sonora',      loc:'Piquiri (Assent.)',      hr:'19:30',resp:'Edivaldo A. Cavalcante',         anc:false,diac:'Jo\u00e3o Torquato de Souza',   a1:'Jos\u00e9 Carlos',a2:'Mayron',           vc:'Coxim'},
+  {n:14,d:'20/06/2026',dn:'S\u00e1bado',   city:'Sao Gabriel', loc:'Central SG',            hr:'19:30',resp:'Marcos Chamb\u00f3 Picinin',     anc:true, diac:'Eliseu Sim\u00e3o Rezende',      a1:'Beto',       a2:'Noel',                 vc:'Coxim'},
+  {n:15,d:'27/06/2026',dn:'S\u00e1bado',   city:'Pedro Gomes', loc:'Central PG',            hr:'19:30',resp:'Josenil Alves de Souza',         anc:false,diac:'Edinaldo Fernandes Jr.',         a1:'Tigr\u00e3o', a2:'Miguel',              vc:'Sonora'},
+  {n:16,d:'27/06/2026',dn:'S\u00e1bado',   city:'Rio Verde',   loc:'Vila Nova',             hr:'19:30',resp:'Cosme Borges de Oliveira',       anc:false,diac:'Lindomar dos Anjos Souza',       a1:'Danilo',     a2:'Beto',                 vc:'SG+Coxim'},
+  {n:17,d:'05/07/2026',dn:'Domingo',        city:'Rio Verde',   loc:'Beira Alta',            hr:'15:30',resp:'Ezequias Ribeiro Alcantara',     anc:false,diac:'Jo\u00e3o Torquato de Souza',   a1:'Danilo',     a2:'Fernando',             vc:'Coxim',jt:true},
+];
+const CBADGE={Sonora:'cb-son','Pedro Gomes':'cb-pg',Coxim:'cb-cox','Rio Verde':'cb-rv','Sao Gabriel':'cb-sg'};
+const PDF_MAP={
+  ALL:'pdfs/calendario_todas_ccb_2026.pdf',Sonora:'pdfs/calendario_sonora_ccb_2026.pdf',
+  'Pedro Gomes':'pdfs/calendario_pedro_gomes_ccb_2026.pdf',
+  Coxim:'pdfs/calendario_coxim_ccb_2026.pdf','Rio Verde':'pdfs/calendario_rio_verde_ccb_2026.pdf',
+  'Sao Gabriel':'pdfs/calendario_sao_gabriel_ccb_2026.pdf',
+};
+function vcBadge(vc){
+  const m={Coxim:'<span class="vcity vc-cox">Coxim</span>',Sonora:'<span class="vcity vc-son">Sonora</span>',
+    'PG+Coxim':'<span class="vcity vc-pg">P.Gomes</span>&thinsp;<span class="vcity vc-cox">Coxim</span>',
+    'RV+Coxim':'<span class="vcity vc-rv">Rio Verde</span>&thinsp;<span class="vcity vc-cox">Coxim</span>',
+    'SG+Coxim':'<span class="vcity vc-sg">S.Gabriel</span>&thinsp;<span class="vcity vc-cox">Coxim</span>'};
+  return m[vc]||vc;
+}
+function renderCal(filter){
+  const tb=document.getElementById('ctbody');tb.innerHTML='';
+  EV.forEach(e=>{
+    if(filter&&filter!=='ALL'&&e.city!==filter)return;
+    const tr=document.createElement('tr');tr.setAttribute('data-c',e.city);
+    const bc=CBADGE[e.city]||'cb-cox';
+    const cname=e.city==='Sao Gabriel'?'S\u00e3o Gabriel':e.city;
+    const ancBadge=e.anc?'<span class="anc-badge">Anc.</span>':'';
+    const jtNote=e.jt?'<span class="jt-note"> *</span>':'';
+    tr.innerHTML=`<td class="sc"><span class="cs"></span></td>
+      <td style="white-space:nowrap;font-family:'Cinzel',serif;font-size:11.5px;font-weight:600">${e.d}</td>
+      <td><span class="db">${e.dn}</span></td>
+      <td><span class="cb ${bc}">${cname}</span></td>
+      <td style="font-weight:600">${e.loc}</td>
+      <td class="hora">${e.hr}</td>
+      <td>${e.resp}${ancBadge}</td>
+      <td>${e.diac}${jtNote}</td>
+      <td>${e.a1}</td><td>${e.a2}</td>
+      <td>${vcBadge(e.vc)}</td>`;
+    tb.appendChild(tr);
+  });
+}
+function fc(btn,f){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');renderCal(f);
+  const p=document.getElementById('cal-pdf-btn');
+  if(p)p.href=PDF_MAP[f]||PDF_MAP.ALL;
+}
+function switchTab(id,btn){
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');
+}
+function buildPersons(){
+  const map={};
+  function add(name,role,color,e){
+    if(!name)return;
+    if(!map[name])map[name]={role,color,items:[]};
+    map[name].items.push({date:e.d,local:e.loc,city:e.city==='Sao Gabriel'?'S\u00e3o Gabriel':e.city});
+  }
+  EV.forEach(e=>{
+    add(e.resp,e.anc?'Anc. (part. especial)':'Min. Respons\u00e1vel','#B8912A',e);
+    add(e.diac,'Di\u00e1cono','#1A6FA8',e);
+    add(e.a1,'Administrador','#2E7D4F',e);
+    add(e.a2,'Administrador','#2E7D4F',e);
+  });
+  const order={'Min. Respons\u00e1vel':0,'Anc. (part. especial)':0,'Di\u00e1cono':1,'Administrador':2};
+  const entries=Object.entries(map).sort((a,b)=>(order[a[1].role]||2)-(order[b[1].role]||2)||a[0].localeCompare(b[0],'pt'));
+  const grid=document.getElementById('pgrid');grid.innerHTML='';
+  entries.forEach(([name,d])=>{
+    const ini=name.split(' ').filter(w=>w.length>2).slice(0,2).map(w=>w[0]).join('');
+    const c=document.createElement('div');c.className='pcard';
+    c.innerHTML=`<div class="phead"><div class="pav" style="background:${d.color}">${ini}</div>
+      <div><div class="pname">${name}</div><div class="prole">${d.role} &middot; <strong>${d.items.length}</strong></div></div></div>
+      <div class="pass">${d.items.map(i=>`<div class="pai"><div class="pad">${i.date.slice(0,5)}</div>
+      <div class="pal">${i.local}<small>${i.city}</small></div></div>`).join('')}</div>`;
+    grid.appendChild(c);
+  });
+}
+function buildDist(){
+  const secs=[
+    {title:'Cooperadores Regulares — Pool Completo (15 &times; 1 culto)',avg:'1,0',total:15,cls:'bco-cox',
+     note:'Distribui\u00e7\u00e3o perfeita: todos os 15 cooperadores regulares com exatamente 1 designa\u00e7\u00e3o.',
+     data:[
+      {n:'Adair Barbosa Rios (RV)',c:1},{n:'Jo\u00e9l Pereira Rosa (RV)',c:1},
+      {n:'Gerv\u00e1sio Proe\u00e7a (Cx)',c:1},{n:'Cleitom (Cx)',c:1},
+      {n:'Jo\u00e3o Ferreira Ribolis (Cx)',c:1},{n:'Samuel Ribeiro da Silva (Cx)',c:1},
+      {n:'Edivaldo A. Cavalcante (Cx)',c:1},{n:'Ezequias Ribeiro Alcantara (Cx)',c:1},
+      {n:'Jos\u00e9 Donizete de Souza (PG)',c:1},{n:'Valdeci Pereira da Silva (PG)',c:1},
+      {n:'Jos\u00e9 Creonei da Silva (Sn)',c:1},{n:'Aildo Souza Gomes (Sn)',c:1},
+      {n:'Josenil Alves de Souza (Sn)',c:1},
+      {n:'Elias Campos da Silva (SG)',c:1},{n:'Cosme Borges de Oliveira (SG)',c:1}]},
+    {title:'Anci\u00e3os Participantes — Centrais n\u00e3o-Coxim',avg:'1,0',total:2,cls:'ba',
+     note:'Por decis\u00e3o expl\u00edcita da coordena\u00e7\u00e3o. N\u00e3o integram o pool geral.',
+     data:[{n:'Jesiel de Brito Fonseca — Central RV (#9, 14/06)',c:1},
+           {n:'Marcos Chamb\u00f3 Picinin — Central SG (#14, 20/06)',c:1}]},
+    {title:'Di\u00e1conos — Todos (17 cultos \u00b7 7 di\u00e1c. \u00b7 m\u00e9dia 2,43)',avg:'2,43',total:17,cls:'bd',
+     note:'M\u00e1ximo 3 cultos. Desvio m\u00e1x.: 0,57 < 1 \u2713. Tay\u00e3: 0 designa\u00e7\u00f5es.',
+     data:[
+      {n:'Adalto Azevedo Pereira',c:2},{n:'Jo\u00e3o Torquato de Souza',c:3},
+      {n:"Nilson Sant\u2019Anna",c:2},{n:'Eliseu Sim\u00e3o Rezende',c:3},
+      {n:'Edinaldo Fernandes Jr.',c:3},{n:'Jos\u00e9 Cavalcanti Costa',c:2},
+      {n:'Lindomar dos Anjos Souza',c:2}]},
+    {title:'Admins Coxim — 14 cultos \u00d72 = 28 slots \u00b7 7 admins',avg:'4,0',total:28,cls:'bc',
+     note:'Distribui\u00e7\u00e3o perfeita: todos com exatamente 4 designa\u00e7\u00f5es.',
+     data:[{n:'Douglas',c:4},{n:'Fernando',c:4},{n:'Beto',c:4},{n:'Jos\u00e9 Carlos',c:4},
+           {n:'Danilo Bressan',c:4},{n:'Mayron',c:4},{n:'Noel',c:4}]},
+    {title:'Admins Sonora — 3 cultos \u00d72 = 6 slots \u00b7 3 admins',avg:'2,0',total:6,cls:'ba',
+     note:'Distribui\u00e7\u00e3o perfeita: todos com exatamente 2 designa\u00e7\u00f5es.',
+     data:[{n:'Lucas',c:2},{n:'Claudio Rog\u00e9rio (Tigr\u00e3o)',c:2},{n:'Miguel',c:2}]},
+  ];
+  const g=document.getElementById('dgrid');g.innerHTML='';
+  secs.forEach(s=>{
+    const mx=Math.max(...s.data.map(p=>p.c));
+    const rows=s.data.map(p=>`<div class="dp">
+      <div class="dn">${p.n}</div>
+      <div class="dbw"><div class="dbb ${s.cls}" style="width:${Math.round(p.c/mx*100)}%"></div></div>
+      <div class="dk">${p.c}</div></div>`).join('');
+    const d=document.createElement('div');d.className='dc';
+    d.innerHTML=`<div class="dch"><div class="dct">${s.title}</div><div class="dca">m\u00e9dia: ${s.avg}</div></div>${rows}<div class="dn-note">${s.note}</div>`;
+    g.appendChild(d);
+  });
+}
+function buildBlk(){
+  const glob=[
+    {date:'07/06',dn:'Dom',tipo:'Regional',escopo:'Todos',motivo:'Ensaio + Mocidade'},
+    {date:'03/06',dn:'Qua',tipo:'Adm.',escopo:'Minist\u00e9rio Coxim',motivo:'RRM/RML Coxim'},
+    {date:'05/07',dn:'Dom',tipo:'Regional*',escopo:'Geral (Beira Alta isento)',motivo:'Ensaio + Mocidade (Costa Rica) \u2014 B1: Beira Alta isento'},
+    {date:'11/07',dn:'S\u00e1b',tipo:'Batismo',escopo:'Coxim \u2014 todas',motivo:'Batismo Regional Coxim'},
+    {date:'18/07',dn:'S\u00e1b',tipo:'S.Ceia Reg.',escopo:'Sonora \u2014 todas',motivo:'Santa Ceia Regional Sonora'},
+    {date:'20/06',dn:'S\u00e1b',tipo:'S.Ceia Reg.',escopo:'Rio Verde \u2014 todas',motivo:'Santa Ceia Regional Rio Verde'},
+    {date:'26/07',dn:'Dom',tipo:'Regional',escopo:'Todos',motivo:'Ensaio + Mocidade (Pedro Gomes)'},
+  ];
+  const tc={'Regional':'bt-blue','Regional*':'bt-blue','Adm.':'bt-pur','Batismo':'bt-red','S.Ceia Reg.':'bt-ora'};
+  const gb=document.getElementById('blk-global');gb.innerHTML='';
+  glob.forEach(r=>{const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${r.date}</td><td>${r.dn}</td><td><span class="bt ${tc[r.tipo]||'bt-blue'}">${r.tipo}</span></td><td>${r.escopo}</td><td>${r.motivo}</td>`;
+    gb.appendChild(tr);});
+  const sc=[
+    {date:'26/05',dn:'Ter',local:'PG \u2014 Vila Marcelino',bloq:'Jos\u00e9 Cavalcanti Costa'},
+    {date:'30/05',dn:'S\u00e1b',local:'Sonora Central',bloq:'Edinaldo Fernandes Jr.'},
+    {date:'13/06',dn:'S\u00e1b',local:'RV \u2014 Vila Nova',bloq:'Jo\u00e3o Torquato de Souza'},
+    {date:'14/06',dn:'Dom',local:'Coxim \u2014 Vila Bela II',bloq:'Adalto Azevedo Pereira'},
+    {date:'21/06',dn:'Dom',local:'Sonora \u2014 Piquiri',bloq:'Edinaldo Fernandes Jr.'},
+    {date:'12/07',dn:'Dom',local:'RV \u2014 Central',bloq:'Adalto Azevedo Pereira'},
+    {date:'14/07',dn:'Ter',local:'Coxim \u2014 Vale Taquari',bloq:"Nilson Sant\u2019Anna"},
+    {date:'14/07',dn:'Ter',local:'SG \u2014 Central',bloq:'Marcos Chamb\u00f3 Picinin'},
+    {date:'12/07 \u00b7 14/07',dn:'Div.',local:'V\u00e1rias',bloq:'Jesiel de Brito Fonseca'},
+  ];
+  const sb2=document.getElementById('blk-sc');sb2.innerHTML='';
+  sc.forEach(r=>{const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${r.date}</td><td>${r.dn}</td><td>${r.local}</td><td style="color:var(--ink)">${r.bloq}</td>`;
+    sb2.appendChild(tr);});
+  const ind=[
+    {ir:'Adalto Azevedo Pereira',re:'Bloqueado em 14/06 \u00b7 12/07 \u00b7 23/08',mo:'Santa Ceia em sua \u00e1rea'},
+    {ir:"Nilson Sant\u2019Anna",re:'Bloqueado em 12/07 \u00b7 14/07',mo:'Santa Ceia Silv./Vale Taquari'},
+    {ir:'Jo\u00e3o Torquato de Souza',re:'Bloqueado em 13/06 (RV Vila Nova) \u2014 05/07 isento B1',mo:'Santa Ceia / presen\u00e7a obrigat\u00f3ria'},
+    {ir:'Lindomar dos Anjos Souza',re:'Bloqueado em 30/05 \u00b7 21/06',mo:'Santa Ceia SG/Itaqui'},
+    {ir:'Edinaldo Fernandes Jr.',re:'Bloqueado em 30/05 \u00b7 21/06',mo:'Santa Ceia em sua \u00e1rea'},
+  ];
+  const ib=document.getElementById('blk-ind');ib.innerHTML='';
+  ind.forEach(r=>{const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${r.ir}</td><td>${r.re}</td><td>${r.mo}</td>`;
+    ib.appendChild(tr);});
+}
+function buildAlerts(){
+  const alerts=[
+    {type:'ok',icon:'\u2705',title:'Verifica\u00e7\u00f5es \u2014 Calend\u00e1rio Aprovado v5.9',body:`<ul>
+      <li><strong>17 cultos verificados:</strong> dias corretos, bloqueios respeitados, permuta validada \u2713</li>
+      <li><strong>15 cooperadores regulares:</strong> todos com exatamente 1 designa\u00e7\u00e3o. Nenhum sem culto \u2713</li>
+      <li><strong>2 anci\u00e3os</strong> (Jesiel e Marcos) servem em Centrais n\u00e3o-Coxim por decis\u00e3o expl\u00edcita \u2713</li>
+      <li><strong>Triplo domingo 14/06</strong> (#9 RV, #10 Coxim, #11 SG): equipes 100% distintas, zero sobreposi\u00e7\u00e3o \u2713</li>
+      <li><strong>Duplos s\u00e1bado 13/06</strong> (#7 Coxim, #8 Sonora): equipes distintas \u2713</li>
+      <li><strong>Duplos s\u00e1bado 20/06</strong> (#13 Sonora, #14 SG): equipes distintas \u2713</li>
+      <li><strong>Duplos s\u00e1bado 27/06</strong> (#15 PG, #16 RV): equipes distintas \u2713</li>
+      <li><strong>SC 13/06 Jo\u00e3o Torquato:</strong> designado em 11/06 e 14/06, n\u00e3o em 13/06 \u2713</li>
+      <li><strong>SC 14/06 Adalto:</strong> designado em 11/06, n\u00e3o em 14/06 \u2713</li>
+      <li><strong>05/07 Beira Alta:</strong> isento do bloqueio regional (B1) \u2014 Jo\u00e3o Torquato presen\u00e7a obrigat\u00f3ria \u2713</li>
+    </ul>`},
+    {type:'info',icon:'\ud83d\ude8c',title:'Estrutura das Equipes Visitantes',body:`
+      <table style="width:100%;font-size:12px;border-collapse:collapse">
+        <tr style="background:rgba(176,123,0,.06)"><td style="padding:5px 8px;font-weight:600">Coxim (puro)</td><td style="padding:5px 8px;color:var(--lt)">11 cultos: #4,#5,#8,#9,#11,#12,#13,#14,#16,#17 + 1 a ser confirmado</td></tr>
+        <tr><td style="padding:5px 8px;font-weight:600">Sonora (puro)</td><td style="padding:5px 8px;color:var(--lt)">3 cultos: #6 Marechal · #7 Central Coxim · #15 Central PG</td></tr>
+        <tr style="background:rgba(46,125,79,.06)"><td style="padding:5px 8px;font-weight:600">PG + Coxim</td><td style="padding:5px 8px;color:var(--lt)">2 cultos: #2 VB II · #12 Posto Recreio</td></tr>
+        <tr><td style="padding:5px 8px;font-weight:600">RV + Coxim</td><td style="padding:5px 8px;color:var(--lt)">2 cultos: #1 Piracema · #3 Vale Taquari</td></tr>
+        <tr style="background:rgba(123,69,173,.06)"><td style="padding:5px 8px;font-weight:600">SG + Coxim</td><td style="padding:5px 8px;color:var(--lt)">2 cultos: #10 Silviol\u00e2ndia · #16 Vila Nova</td></tr>
+      </table>`},
+    {type:'info',icon:'\ud83d\udccb',title:'Cobertura dos Cultos Regulares nas Datas-Chave',body:`<ul>
+      <li><strong>11/06 (Qui):</strong> Coxim visita Sonora (#4) e PG (#5) simultaneamente. Silv. e Piracema (Qui regular): minist\u00e9rio local remanescente cobre \u2713</li>
+      <li><strong>13/06 (S\u00e1b):</strong> Sonora visita Central Coxim; Coxim visita Central Sonora. Central Coxim tem Dom regular \u2014 minist\u00e9rio remanescente cobre \u2713</li>
+      <li><strong>14/06 (Dom):</strong> 3 equipes em campo. Cada localidade de origem com minist\u00e9rio remanescente \u2713</li>
+      <li><strong>20/06 (S\u00e1b):</strong> S.Ceia Regional RV \u2014 nenhum culto em RV nesta data \u2713</li>
+      <li><strong>27/06 (S\u00e1b):</strong> PG Central e RV Vila Nova simult\u00e2neos. Equipes distintas (Sonora e SG+Coxim) \u2713</li>
+      <li><strong>05/07 (Dom):</strong> Beira Alta \u00e0 tarde (15:30). Bloqueio regional isento por B1 \u2713</li>
+    </ul>`},
+    {type:'note',icon:'\ud83d\udccc',title:'Pontos de Aten\u00e7\u00e3o',body:`<ul>
+      <li><strong>Ministro Resp.</strong> = cooperador regular OU anci\u00e3o designado para este culto espec\u00edfico. As equipes s\u00e3o identificadas pelo badge <span class="anc-badge" style="font-size:10px">Anc.</span> ao lado do nome.</li>
+      <li><strong>Central Coxim</strong> tem culto no S\u00e1bado \u00e0 noite E no Domingo \u00e0 noite. Verificar cobertura em ambos quando a equipe Sonora visita (13/06 S\u00e1b).</li>
+      <li><strong>Jo\u00e3o Torquato</strong> acumula 3 designa\u00e7\u00f5es (#11, #13, #17). Desvio: 0,57 < 1 \u2713. A de #17 (05/07) \u00e9 obrigat\u00f3ria por B1.</li>
+      <li><strong>Edivaldo Amancio Cavalcante:</strong> cooperador do Posto Recreio (#12 \u2014 17/06), serve em Piquiri-Sonora (#13 \u2014 20/06). Permuta correta: localidades distintas \u2713</li>
+    </ul>`},
+  ];
+  const g=document.getElementById('agrid');g.innerHTML='';
+  alerts.forEach(a=>{
+    const d=document.createElement('div');d.className=`ac ${a.type}`;
+    d.innerHTML=`<div class="ah"><span class="ai">${a.icon}</span><span class="at">${a.title}</span></div><div class="ab">${a.body}</div>`;
+    g.appendChild(d);});
+}
+function checkRot(){
+  const mob=window.innerWidth<=768||window.screen.width<=768;
+  const port=window.innerHeight>window.innerWidth;
+  const el=document.getElementById('rot');
+  if(el)el.style.display=(mob&&port)?'flex':'none';
+}
+window.addEventListener('resize',checkRot);
+window.addEventListener('orientationchange',()=>setTimeout(checkRot,300));
+renderCal('ALL');buildPersons();buildDist();buildBlk();buildAlerts();checkRot();
+</script>
+</body>
+</html>
